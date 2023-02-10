@@ -95,7 +95,6 @@ You should now have a project with the following folders
 │   │   └── resources
 │   └── test
 │       └── resources
-├── log
 ├── resources
 ├── src
 │   └── clj
@@ -111,18 +110,109 @@ You should now have a project with the following folders
             └── gif2html
 ```
 
-TODO: explain folder structure
+Let's take a look at what these folders are and their purpose.
+
+* `env` - This folder contains environment dependent code.
+  * `dev` - The code in this folder will only be run during development.
+  * `prod` - The code in this folder will be compiled into the uberjar when the application is packaged for deployment. 
+* `resources` - This folder contains static assets such as configuration files, HTML templates, and so on.
+* `src/clj` - This folder contains the application code.
+  * `controllers` - This package contains namespaces that handle your application business logic.
+  * `middleware` - This package contains Ring routing middleware that encapsulates cross-cutting logic shared across the routes.
+  * `routes` - This package is where server endpoints are defined.
+* `test` - This folder contains the tests.
 
 ### kit.edn
 
-TODO explain what this is
+Kit uses a module system that allows adding new functionality to existing Kit projects by installing modules from the REPL.
+This file contains metadata about the project and referenes to module repositories that will be used to add new modules in the project.
 
-TODO: run REPL, connect to it in Calva
+Kit modules are templates that get injected in the project and generate code within exisitng project files. The metadata in `kit.edn` is
+used to specify the paths and namespaces for the generated code.
 
-TODO: sync modules
+### Starting the REPL
 
-TODO: run server, see that it works
+The REPL can be started by running the following command from the project folder:
+
+    clj -M:dev:nrepl
+
+Once the REPL starts you should see the following in the terminal, note that the PORT is selected at random:
+
+```
+nREPL server started on port 65110 on host localhost - nrepl://localhost:65110
+nREPL 0.9.0
+Clojure 1.11.1
+OpenJDK 64-Bit Server VM 17.0.1+12-39
+Interrupt: Control+C
+Exit:      Control+D or (exit) or (quit)
+user=>
+```
+
+Once you see the prompt, you can connect your editor to the REPL. We'll go through connecting Calva, but other editors should work similarly.
+
+* Click on the `REPL` button at the bottom left.
+* Select `Connect to a running REPL in your project`
+* Select `deps.edn`
+* Press `enter`, correct port should be detected automatically.
+
+If everything went well then you should see the following prompt:
+
+```clojure
+; Connecting ...
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+```
+
+### Using Modules
+
+We'll need to pull the modules from the remote repository. This is accomplished by running the following commmand in the REPL:
+
+```clojure
+clj꞉user꞉> (kit/sync-modules)
+:done
+```
+If the command ran successfully then you should see a new `modules` folder in the project containing the modules that were downloaded and are now available for use.
+Let's list the available modules:
+
+```clojure
+clj꞉user꞉> (kit/list-modules)
+:kit/html - adds support for HTML templating using Selmer
+:kit/htmx - adds support for HTMX using hiccup
+:kit/ctmx - adds support for HTMX using CTMX
+:kit/metrics - adds support for metrics using prometheus through iapetos
+:kit/sente - adds support for Sente websockets to cljs
+:kit/sql - adds support for SQL. Available profiles [ :postgres :sqlite ]. Default profile :sqlite
+:kit/cljs - adds support for cljs using shadow-cljs
+:kit/nrepl - adds support for nREPL
+:done
+```
+
+Finallly, let's try starting the server to make sure our application is working.
+
+TODO: figure out why go behaves differently from reset
+```clojure
+clj꞉user꞉> (go)
+:initiated
+```
+Let's navigate to `http://localhost:3000/api/health` and see if we have some health check information returned by the server:
+
+```javascript
+{"time":"Fri Feb 10 13:54:36 EST 2023","up-since":"Wed Jan 18 22:53:21 EST 2023","app":{"status":"up","message":""}}
+```
 
 ### CHECKPOINT 1
 
 At this point you should have your project setup, are able to run and connect to the REPL, and run the web server successfully.
+
+
+### Modules
+
+TODO: explain how modules work and how to make your own modules.
