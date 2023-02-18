@@ -24,6 +24,7 @@ Make sure you have the following dependencies installed:
 - Clojure CLI https://clojure.org/guides/install_clojure
 - Java 11+ (17 recommended)
 - Calva (+ clj-kondo extension), or editor of preference as long as nREPL compatible (Cursive, Emacs, etc.)
+- Docker and docker compose. Check that you can run `docker compose up` on a simple `docker-compose.yml` file https://docs.docker.com/compose/gettingstarted/
 
 Clone this repository and make sure you can run the project by doing the following
 
