@@ -211,4 +211,4 @@ Let's navigate to `http://localhost:3000/api/health` and see if we have some hea
 
 At this point you should have your project setup, are able to run and connect to the REPL, and run the web server successfully.
 
-[Click here to continue on to Checkpoint 2]()
+[Click here to continue on to Checkpoint 2](https://github.com/nikolap/kit-workshop/tree/checkpoint-2)
