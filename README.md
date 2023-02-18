@@ -2,7 +2,16 @@
 
 ## Table of Contents
 
-TODO
+* [Prerequisites](#prerequisites)
+  * [Setup](#setup)
+  * [Intro to Clojure](#intro-to-clojure)
+  * [Conduct During the Workshop](#conduct-during-the-workshop)
+* [Kit Workshop](#kit-workshop-1)
+  * [Creating a Project](#creating-a-project)
+  * [kit.edn](#kitedn)
+  * [Starting the REPL](#starting-the-repl)
+  * [Using Modules](#using-modules)
+  * [CHECKPOINT 1](#checkpoint-1)
 
 ## Prerequisites
 
@@ -60,7 +69,9 @@ We will **not** be going over the basics of Clojure during the workshop.
 
 Some general guidelines during the workshop
 
-TODO
+- By attentding this workshop, you agree to the [Code of Conduct](/CONDUCT.md)
+- If you get stuck, questions are encouraged
+- Checkpoints and branches are available to make sure everyone's on the same page
 
 ## Kit Workshop
 
