@@ -14,7 +14,7 @@ Make sure you have the following dependencies installed:
 
 - Clojure CLI https://clojure.org/guides/install_clojure
 - Java 11+ (17 recommended)
-- Calva, or editor of preference as long as nREPL compatible (Cursive, Emacs, etc.)
+- Calva (+ clj-kondo extension), or editor of preference as long as nREPL compatible (Cursive, Emacs, etc.)
 
 Clone this repository and make sure you can run the project by doing the following
 
@@ -197,7 +197,6 @@ clj꞉user꞉> (kit/list-modules)
 
 Finallly, let's try starting the server to make sure our application is working.
 
-TODO: figure out why go behaves differently from reset
 ```clojure
 clj꞉user꞉> (go)
 :initiated
@@ -212,7 +211,4 @@ Let's navigate to `http://localhost:3000/api/health` and see if we have some hea
 
 At this point you should have your project setup, are able to run and connect to the REPL, and run the web server successfully.
 
-
-### Modules
-
-TODO: explain how modules work and how to make your own modules.
+[Click here to continue on to Checkpoint 2]()
