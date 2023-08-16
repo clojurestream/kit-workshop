@@ -1,0 +1,8 @@
+{:full-name "io.github.kit/gif2html"
+ :ns-name   "io.github.kit.gif2html"
+ :sanitized "io/github/kit/gif2html"
+ :name      "gif2html"
+ :modules   {:root         "modules"
+             :repositories [{:url  "https://github.com/kit-clj/modules.git"
+                             :tag  "master"
+                             :name "kit-modules"}]}}
