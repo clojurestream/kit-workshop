@@ -11,7 +11,10 @@
 
     ;; Routes
     [io.github.kit.gif2html.web.routes.api]
-    )
+    
+    [kit.edge.db.sql.conman] 
+    [kit.edge.db.sql.migratus]
+    [kit.edge.db.postgres])
   (:gen-class))
 
 ;; log uncaught exceptions in threads
