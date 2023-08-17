@@ -45,4 +45,5 @@
 
 (comment
   (go)
-  (reset))
+  (reset)
+  (def query-fn (:db.sql/query-fn state/system)))
