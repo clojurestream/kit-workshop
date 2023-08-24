@@ -14,7 +14,9 @@
     
     [kit.edge.db.sql.conman]
     [kit.edge.db.sql.migratus]
-    [kit.edge.db.postgres])
+    [kit.edge.db.postgres]
+   
+    [io.github.kit.gif2html.components.hato])
   (:gen-class))
 
 ;; log uncaught exceptions in threads

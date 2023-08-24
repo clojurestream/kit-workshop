@@ -34,10 +34,14 @@
                                      :content-types true
                                      :default-charset "utf-8"}}}
 
+ :http/hato
+ {:connect-timeout 3000}
+
  :reitit.routes/api
- {:base-path "/api"
-  :env #ig/ref :system/env
-  :query-fn #ig/ref :db.sql/query-fn}
+ {:base-path   "/api"
+  :env         #ig/ref :system/env
+  :query-fn    #ig/ref :db.sql/query-fn
+  :http-client #ig/ref :http/hato}
 
  :router/routes
  {:routes #ig/refset :reitit/routes}
