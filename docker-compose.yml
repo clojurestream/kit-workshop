@@ -11,6 +11,17 @@ services:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+  testdb:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_PASSWORD: gif2html
+      POSTGRES_USER: gif2html
+      POSTGRES_DB: gif2html
+    ports:
+      - "5442:5432"
+    volumes:
+      - test_db_data:/var/lib/postgresql/data
 
 volumes:
   db_data:
+  test_db_data:

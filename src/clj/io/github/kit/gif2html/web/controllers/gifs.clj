@@ -31,3 +31,21 @@
 
 (defn get-gif-by-id [{:keys [query-fn] :as opts} {{params :path} :parameters}]
   (http-response/ok (query-fn :get-gif-by-id params)))
+
+
+(comment
+  ;; Test save
+  (let [{:keys [:db.sql/query-fn :http/hato]} integrant.repl.state/system]
+    (save-gif {:query-fn query-fn :http-client hato}
+              {:parameters {:body {:link "https://media.tenor.com/JMzBeLgNaSoAAAAj/banana-dance.gif" :name "foo"}}}))
+  
+  ;; Test save v2
+  (save-gif (user/api-ctx) {:parameters {:body {:link "https://media.tenor.com/JMzBeLgNaSoAAAAj/banana-dance.gif" :name "foo"}}})
+  
+  ;; Test get gifs
+  (->> (list-gifs (user/api-ctx) nil)
+       :body
+       (map #(select-keys % [:name :id])))
+  
+  ;; Test get gif
+  (get-gif-by-id (user/api-ctx) {:parameters {:path {:id 3}}}))

@@ -41,7 +41,9 @@
 
 (def refresh repl/refresh)
 
-
+(defn api-ctx []
+  {:query-fn (:db.sql/query-fn state/system)
+   :http-client (:http/hato state/system)})
 
 (comment
   (go)

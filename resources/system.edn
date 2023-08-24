@@ -54,4 +54,6 @@
  :db.sql/migrations {:store :database,
                      :db {:datasource #ig/ref :db.sql/connection},
                      :migrate-on-init? true}
- :db.sql/connection #profile {:default {:jdbc-url "jdbc:postgresql://localhost:5432/gif2html?user=gif2html&password=gif2html"}}}
+ :db.sql/connection #profile {:dev  {:jdbc-url "jdbc:postgresql://localhost:5432/gif2html?user=gif2html&password=gif2html"}
+                              :test {:jdbc-url "jdbc:postgresql://localhost:5442/gif2html?user=gif2html&password=gif2html"}
+                              :prod {:jdbc-url #env JDBC_URL}}}
