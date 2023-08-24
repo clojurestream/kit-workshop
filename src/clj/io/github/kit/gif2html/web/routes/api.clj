@@ -8,16 +8,31 @@
     [reitit.ring.coercion :as coercion]
     [reitit.ring.middleware.muuntaja :as muuntaja]
     [reitit.ring.middleware.parameters :as parameters]
-    [reitit.swagger :as swagger]))
+    [reitit.swagger :as swagger]
+    [io.github.kit.gif2html.web.controllers.gifs :as gifs]))
 
 ;; Routes
-(defn api-routes [_opts]
+(defn api-routes [opts]
   [["/swagger.json"
     {:get {:no-doc  true
            :swagger {:info {:title "io.github.kit.gif2html API"}}
            :handler (swagger/create-swagger-handler)}}]
    ["/health"
-    {:get health/healthcheck!}]])
+    {:get health/healthcheck!}]
+   ["/gifs"
+    ["" {:post {:summary    "creates a new gif and returns the inserted row"
+                :parameters {:body [:map
+                                    [:link string?]
+                                    [:name string?]]}
+                :responses  {200 {:body gifs/Gif}}
+                :handler    (partial gifs/save-gif opts)}
+         :get  {:summary   "returns all created gifs"
+                :responses {200 {:body [:vector gifs/Gif]}}
+                :handler   (partial gifs/list-gifs opts)}}]
+    ["/:id" {:get {:summary    "gets a single gif based off of ID"
+                   :parameters {:path [:map [:id integer?]]}
+                   :responses  {200 {:body gifs/Gif}}
+                   :handler    (partial gifs/get-gif-by-id opts)}}]]])
 
 (defn route-data
   [opts]
