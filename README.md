@@ -46,10 +46,12 @@ macOS or Linux recommended.
 Make sure you have the following dependencies installed:
 
 - Clojure CLI https://clojure.org/guides/install_clojure
-- Babashka https://babashka.org
 - Java 11+ (17 recommended)
-- Calva (+ clj-kondo extension), or editor of preference as long as nREPL compatible (Cursive, Emacs, etc.)
-- Docker and docker compose. Check that you can run `docker compose up` on a simple `docker-compose.yml` file https://docs.docker.com/compose/gettingstarted/
+- Docker and [docker compose](https://docs.docker.com/compose/gettingstarted/). Check that you can run `docker compose up` on a simple `docker-compose.yml` file. (alternatively make sure you have a locally running Postgres on your machine)
+- VSCode with Calva, or editor of preference as long as it's nREPL compatible (Cursive, Emacs, etc.)
+
+Optionally, we recommend installing Babashka to run the frontend script that will be used to test the project
+- Babashka https://babashka.org
 
 Clone this repository and make sure you can run the project by doing the following
 
