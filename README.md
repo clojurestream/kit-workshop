@@ -406,7 +406,7 @@ Let's add one more dependency in `deps.edn`:
 io.github.kit-clj/kit-postgres {:mvn/version "1.0.3"}
 ```
  
- This library contains extensions for JDBC to store data structures such as EDN as JSON in PostgreSQL. We can refer it in `core.clj` by adding `[kit.edge.db.postgres]` to the `requires` vector.
+ This library contains extensions for JDBC to store data structures such as EDN as JSON in PostgreSQL. We can refer it in `core.clj` by adding `[kit.edge.db.postgres]` to the `requires` vector. Let's restart the REPL to make sure the changes take effect.
 
 Don't worry, these commands will be explained shortly.
 
