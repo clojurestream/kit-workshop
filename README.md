@@ -319,6 +319,11 @@ restart required!
 :done
 ```
 
+Let's take a look at the change that the module made to the project by looking at the diff:
+
+```shell
+git diff
+```
 Let's quickly add a `docker-compose.yml`. You can copy this over in to the root of the project:
 
 ```yml
