@@ -116,7 +116,7 @@ clojure -Ttools install com.github.seancorfield/clj-new '{:git/tag "v1.2.381"}' 
 Now we can create our new project by running.
 
 ```bash
-clojure -Tnew create :template io.github.kit-clj :name workshop/gif2html
+ clojure -Tnew create :template io.github.kit-clj :name io.github.kit/gif2html
 cd gif2html
 ```
 
