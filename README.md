@@ -898,6 +898,12 @@ Before you'll recall we were able to fetch a URL and convert the body stream to 
 We see that this returns a vector with a map containing the `id` key. We can destructure this and return our newly created map to the frontend as follows:
 
 ```clojure
+(ns io.github.kit.gif2html.web.controllers.gifs
+ (:require
+  ...
+  [gif-to-html.convert :as convert]
+  [hato.client :as hato]))
+
 (defn save-gif [{:keys [query-fn http-client] :as opts}
                 {{{link :link name :name} :body} :parameters}]
   (->> (hato/get
