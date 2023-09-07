@@ -666,7 +666,7 @@ Now we can add a new `/gifs` route as follows:
 
 Let's run `(integrant.repl/reset)` to reload the system and navigate to `http://localhost:3000/api` in order to test out our new route.
 
-We'll add another route to list all the gifs, and then one to fetch by gif ID. First let's create our controller logic
+Let's head back to the `io.github.kit.gif2html.web.controllers.gifs` namespace where we'll add another route to list all the gifs, and then one to fetch by gif ID. First let's create our controller logic
 
 ```clojure
 (defn list-gifs [{:keys [query-fn] :as opts} _]
@@ -781,7 +781,7 @@ Note: if this URL doesn't work / returns a 404, you could try the image we hoste
 
 Hato uses the JDK11 HTTP client in each HTTP request it sends. The best practice for this is to define a client ahead of time and use that client for all relevant requests. While Kit offers the [kit-hato](https://clojars.org/io.github.kit-clj/kit-hato) library, for sake of practice we will build ours from scratch here and hook it up to our routes.
 
-Let's create a new namespace, `hato`. We'll refer to the documentation in [hato](https://github.com/gnarroway/hato) to find the API to create a client. We'll reference `hato.client` as `hc`. Let's quickly test this in the REPL that we can create a new client.
+We'll refer to the documentation in [hato](https://github.com/gnarroway/hato) to find the API to create a client. We'll reference `hato.client` as `hc`. Let's quickly test this in the REPL that we can create a new client.
 
 ```clojure
 (def c (hc/build-http-client {}))
@@ -809,7 +809,15 @@ For more information on each of these, you can refer to the [Integrant documenta
 
 #### Compoent Lifecycle Multimethods
 
-With all that information let's try to create our first Integrant component which returns a Hato HTTP client given a config map.
+With all that information let's try to create our first Integrant component which returns a Hato HTTP client given a config map. Let's create a new namespace called `io.github.kit.gif2html.components.hato`.
+
+```clojure
+(ns io.github.kit.gif2html.components.hato
+  (:require
+    [integrant.core :as ig]
+    [hato.client :as hc]))
+```
+Next, we'll add the multimethod for starting the client:
 
 ```clojure
 (defmethod ig/init-key :http/hato [_ opts]
@@ -822,18 +830,6 @@ While we don't need to halt the client, for illustration purposes here is how yo
 (defmethod ig/halt-key! :http/hato [_ _http-client]
   ;; If there was effectful logic here to stop it you would do it here
   nil)
-```
-
-Let's put this together in our `hato` namespace:
-
-```clojure
-(ns io.github.kit.gif2html.components.hato
-  (:require
-    [integrant.core :as ig]
-    [hato.client :as hc]))
-
-(defmethod ig/init-key :http/hato [_ opts]
-  (hc/build-http-client opts))
 ```
 
 #### Loading Integrant Components
