@@ -926,7 +926,7 @@ However, you might ask the question "what happens if someone sends a broken link
 (let [params {:name "test"
               :link "broken link"}
       {http-client :hato/client
-       query-fn :db.sql/query-fn} state/system]
+       query-fn :db.sql/query-fn} integrant.repl.state/system]
   (->> (hato/get
          (:link params)
          {:http-client http-client
