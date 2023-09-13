@@ -1067,11 +1067,17 @@ Now we can see that all the fucntion work as intended, and we can take a look at
 
 ### Converting REPL commands into tests
 
-We'll navigate to the `io.github.kit.gif2html.core-test` namespace. First thing we'll need to do here will be to require the `io.github.kit.gif2html.web.controllers.gifs` namespace which will be testing.
+We'll navigate to the `io.github.kit.gif2html.core-test` namespace. First thing we'll need to do here will be to require the `io.github.kit.gif2html.web.controllers.gifs` namespace as `gifs` which will be testing.
 
 We'll also use the `system-fixture` from the `io.github.kit.gif2html.test-utils` namespace to get access to the test system:
 
 ```clojure
+(ns io.github.kit.gif2html.core-test
+  (:require
+    [io.github.kit.gif2html.test-utils :as utils]
+    [io.github.kit.gif2html.web.controllers.gifs :as gifs]
+    [clojure.test :refer :all]))
+
 (use-fixtures :once utils/system-fixture)
 ```
 
