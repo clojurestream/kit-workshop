@@ -1078,7 +1078,7 @@ We'll also use the `system-fixture` from the `io.github.kit.gif2html.test-utils`
     [io.github.kit.gif2html.web.controllers.gifs :as gifs]
     [clojure.test :refer :all]))
 
-(use-fixtures :once utils/system-fixture)
+(use-fixtures :once (utils/system-fixture))
 ```
 
 We'll also need to write a version of the `dev-ctx` function we added in the `user` namespace for testing:
@@ -1212,16 +1212,6 @@ $$
     end;
 $$;"])
   (migratus/migrate (:db.sql/migrations (system-state))))
-```
-
-Then we'll update our `system-fixture` function to clear the database before running the tests:
-
-```clojure
-(defn system-fixture
-  [f]
-  (when (nil? (system-state))
-    (core/start-app {:opts {:profile :test}}))
-  (f))
 ```
 
 Now that we have this running in our REPL, let's stop our server and try running our tests from the command line:
