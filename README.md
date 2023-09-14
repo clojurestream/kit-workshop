@@ -1214,6 +1214,18 @@ $$;"])
   (migratus/migrate (:db.sql/migrations (system-state))))
 ```
 
+Finally, we'll update our `system-fixture` to reset the test database state before running each test:
+
+```clojure
+(defn system-fixture
+  []
+  (fn [f]
+    (when (nil? (system-state))
+      (core/start-app {:opts {:profile :test}}))
+    (clear-db-and-rerun-migrations)
+    (f)))
+```
+
 Now that we have this running in our REPL, let's stop our server and try running our tests from the command line:
 
 ```shell
