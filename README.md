@@ -1225,6 +1225,61 @@ Finally, we'll update our `system-fixture` to reset the test database state befo
     (clear-db-and-rerun-migrations)
     (f)))
 ```
+We can test that everything still works by running `(run-tests)` again from the `io.github.kit.gif2html.test-utils` namespace.
+
+What we did works fine when we have a single fixture, but in many cases we may want to compose multiple fixtures together. We can use `clojure.test/join-fixtures function to do that. Let's see how we can refactor the code above to use multiple fixtures.
+
+First, let's add a new require to the ``
+
+```clojure
+(ns io.github.kit.gif2html.test-utils
+  (:require
+    ...
+    [clojure.test :refer [join-fixtures]]))
+```
+
+Next, let's update the code in `test-utils` as follows:
+
+```clojure
+(defn system-state 
+  []
+  (or @core/system state/system))
+
+(defn clear-db-and-rerun-migrations
+  []
+  (jdbc/execute! (:db.sql/connection (system-state))
+                 ["do
+$$
+    declare
+        row record;
+    begin
+        for row in select * from pg_tables where schemaname = 'public'
+            loop
+                execute 'drop table public.' || quote_ident(row.tablename) || ' cascade';
+            end loop;
+    end;
+$$;"])
+  (migratus/migrate (:db.sql/migrations (system-state))))
+
+(defn db-fixture [f]
+  (clear-db-and-rerun-migrations)
+  (f))
+
+(defn system-fixture [f]
+  (when (nil? (system-state))
+    (core/start-app {:opts {:profile :test}}))
+  (f))
+
+(def test-fixtures (join-fixtures
+                    [system-fixture
+                     db-fixture]))
+```
+
+One last thing we'll have to do is to update `use-fixtures` in the `io.github.kit.gif2html.core-test` namespace to use the new fixture:
+
+```clojure
+(use-fixtures :once utils/test-fixtures)
+```
 
 Now that we have this running in our REPL, let's stop our server and try running our tests from the command line:
 
