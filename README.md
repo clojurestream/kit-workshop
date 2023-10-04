@@ -135,31 +135,18 @@ You should now have a project with the following folders
 
 ```
 ├── env
-│   ├── dev
-│   │   ├── clj
-│   │   │   └── yourname
-│   │   │       └── gif2html
+│   ├── dev/clj/io/github/kit/gif2html
 │   │   └── resources
-│   ├── prod
-│   │   ├── clj
-│   │   │   └── yourname
-│   │   │       └── gif2html
+│   ├── prod/clj/io/github/kit/gif2html
 │   │   └── resources
 │   └── test
 │       └── resources
 ├── resources
-├── src
-│   └── clj
-│       └── workshop
-│           └── gif2html
-│               └── web
-│                   ├── controllers
-│                   ├── middleware
-│                   └── routes
-└── test
-    └── clj
-        └── workshop
-            └── gif2html
+├── src/clj/io/github/kit/gif2html/web
+│                                  ├── controllers
+│                                  ├── middleware
+│                                  └── routes
+└── test/clj/io/github/kit/gif2html    
 ```
 
 Let's take a look at what these folders are and their purpose.
