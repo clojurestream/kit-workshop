@@ -215,6 +215,42 @@ If everything went well then you should see the following prompt:
 ;   - Clojure lines in stack traces are peekable and clickable.
 clj꞉user꞉> 
 ```
+Let's try starting the server to make sure our application is working.
+
+```clojure
+clj꞉user꞉> (go)
+:initiated
+```
+Let's navigate to `http://localhost:3000/api/health` and see if we have some health check information returned by the server:
+
+```javascript
+{"time":"Fri Feb 10 13:54:36 EST 2023",
+ "up-since":"Wed Jan 18 22:53:21 EST 2023",
+ "app":{"status":"up","message":""}}
+```
+
+### SECTION 2
+
+At this point you should have your project setup, are able to run and connect to the REPL, and run the web server successfully.
+
+[Click here to see the solution to the previous section](https://github.com/yogthos/kit-workshop/tree/checkpoint-1)
+
+### Using Kit Modules
+
+By now we've synced modules, but what are they? Kit modules consist of templates that can be used to inject code and resources into a Kit project.
+
+By default, we have the public Kit modules repository linked under the `:modules` key of your `kit.edn` configuration of your project.
+
+```clojure
+{:root         "modules"
+ :repositories [{:url  "https://github.com/kit-clj/modules.git"
+                 :tag  "master"
+                 :name "kit-modules"}]}
+```
+
+This configuration says to pull Kit modules template from the repository `https://github.com/kit-clj/modules.git` on the branch `master`.
+
+This means that it is possible to extend this configuration with private or public modules that you write yourself. We won't be covering this during the workshop, but feel free to give it a try afterwards.
 
 ### Using Modules
 
@@ -239,43 +275,6 @@ clj꞉user꞉> (kit/list-modules)
 :kit/nrepl - adds support for nREPL
 :done
 ```
-
-Finallly, let's try starting the server to make sure our application is working.
-
-```clojure
-clj꞉user꞉> (go)
-:initiated
-```
-Let's navigate to `http://localhost:3000/api/health` and see if we have some health check information returned by the server:
-
-```javascript
-{"time":"Fri Feb 10 13:54:36 EST 2023",
- "up-since":"Wed Jan 18 22:53:21 EST 2023",
- "app":{"status":"up","message":""}}
-```
-
-### SECTION 2
-
-At this point you should have your project setup, are able to run and connect to the REPL, and run the web server successfully.
-
-[Click here to see the solution to the previous section](https://github.com/yogthos/kit-workshop/tree/checkpoint-1)
-
-### What are Modules
-
-By now we've synced modules, but what are they? Kit modules consist of templates that can be used to inject code and resources into a Kit project.
-
-By default, we have the public Kit modules repository linked under the `:modules` key of your `kit.edn` configuration of your project.
-
-```clojure
-{:root         "modules"
- :repositories [{:url  "https://github.com/kit-clj/modules.git"
-                 :tag  "master"
-                 :name "kit-modules"}]}
-```
-
-This configuration says to pull Kit modules template from the repository `https://github.com/kit-clj/modules.git` on the branch `master`.
-
-This means that it is possible to extend this configuration with private or public modules that you write yourself. We won't be covering this during the workshop, but feel free to give it a try afterwards.
 
 Now, let's use Modules to connect to a database.
 
