@@ -280,8 +280,6 @@ Now, let's use Modules to connect to a database.
 
 ### Adding a Database
 
-Let's remind ourselves what modules we can install via `(kit/list-modules)`.
-
 You'll notice there is `:kit/sql` module with various **profiles**. Some modules have features that can be chosen from when installing. To use a non-default feature simply specify the feature flag in an options map as a second argument to `kit/install-module`. For example, `{:feature-flag :postgres}`.
 
 Now let's do this to set up PostgreSQL with our project:
