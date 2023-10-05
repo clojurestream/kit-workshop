@@ -1213,7 +1213,7 @@ We can test that everything still works by running `(run-tests)` again from the 
 
 What we did works fine when we have a single fixture, but in many cases we may want to compose multiple fixtures together. We can use `clojure.test/join-fixtures function to do that. Let's see how we can refactor the code above to use multiple fixtures.
 
-First, let's add a new require to the ``
+First, let's add a new require to the
 
 ```clojure
 (ns io.github.kit.gif2html.test-utils
