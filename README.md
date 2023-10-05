@@ -1290,3 +1290,12 @@ Then we can run the uberjar tha was created in the `target` folder:
 java -jar target/gif2html-standalone.jar
 ```
 Once the app starts up, we can navigate back to the Swagger UI page to test that it's working as expected.
+
+Finally, let's try see what the ASCII animation actually looks like. If you have Babashka installed, grab the [ui.clj](https://github.com/yogthos/kit-workshop/blob/main/ui.clj)
+file from the repo, and then run it as follows:
+
+```bash
+bb ui.clj
+```
+
+You can now navigate to `http://localhost:3001/` and try out the service you built from the page.
