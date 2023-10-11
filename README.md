@@ -233,7 +233,7 @@ Let's navigate to `http://localhost:3000/api/health` and see if we have some hea
 
 At this point you should have your project setup, are able to run and connect to the REPL, and run the web server successfully.
 
-[Click here to see the solution to the previous section](https://github.com/yogthos/kit-workshop/tree/checkpoint-1)
+[Click here to see the solution to the previous section](https://github.com/clojurestream/kit-workshop/tree/checkpoint-1)
 
 ### Using Kit Modules
 
@@ -426,7 +426,7 @@ flowchart TD
 
 At this point you should have your database up and running, and your server should be able to connect to it.
 
-[Click here to see the solution to the previous section](https://github.com/yogthos/kit-workshop/tree/checkpoint-2)
+[Click here to see the solution to the previous section](https://github.com/clojurestream/kit-workshop/tree/checkpoint-2)
 
 ### Managing the Database
 
@@ -560,7 +560,7 @@ We've been using the `(:db.sql/query-fn state/system)` function quite often for 
 
 At this point you should have a `gifs` table in your database, queries written for it, and able to read and write from the REPL.
 
-[Click here to see the solution to the previous section](https://github.com/yogthos/kit-workshop/tree/checkpoint-3)
+[Click here to see the solution to the previous section](https://github.com/clojurestream/kit-workshop/tree/checkpoint-3)
 
 ### Routing
 
@@ -720,7 +720,7 @@ Let's put all of this together, refactoring our existing implementation to follo
 
 At this point you should have a `gifs` table in your database, queries written for it, and able to read and write from the REPL.
 
-[Click here to see the solution to the previous section](https://github.com/yogthos/kit-workshop/tree/checkpoint-4)
+[Click here to see the solution to the previous section](https://github.com/clojurestream/kit-workshop/tree/checkpoint-4)
 
 ### Adding Dependencies
 
@@ -994,7 +994,7 @@ At this point you should be comfortable with the following concepts:
 * error handling with try/catch
 * using Swagger UI to test the endpoints
 
-[Click here to see the solution to the previous section](https://github.com/yogthos/kit-workshop/tree/checkpoint-5)
+[Click here to see the solution to the previous section](https://github.com/clojurestream/kit-workshop/tree/checkpoint-5)
 
 ### Testing with the REPL
 
@@ -1273,7 +1273,7 @@ clojure -M:test
 
 ### SECTION 7
 
-[Click here to see the solution to the previous section](https://github.com/yogthos/kit-workshop/tree/checkpoint-6)
+[Click here to see the solution to the previous section](https://github.com/clojurestream/kit-workshop/tree/checkpoint-6)
 
 Now that our app is working and tested, we're ready to package it for deployment. This is accomplished by building an uberjar using the following command:
 
