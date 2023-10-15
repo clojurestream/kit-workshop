@@ -56,7 +56,7 @@ Optionally, we recommend installing Babashka to run the frontend script that wil
 Clone this repository and make sure you can run the project by doing the following
 
 ```bash
-git clone git@github.com:yogthos/kit-workshop.git
+git clone git@github.com:clojurestream/kit-workshop.git
 cd kit-workshop
 clj -M:dev:nrepl
 ```
@@ -127,7 +127,7 @@ git init
 git checkout -b workshop
 git add .
 git commit -a -m "initial commit"
-git remote add origin git@github.com:yogthos/kit-workshop.git
+git remote add origin git@github.com:clojurestream/kit-workshop.git
 git fetch 
 ```
 
@@ -1291,7 +1291,7 @@ java -jar target/gif2html-standalone.jar
 ```
 Once the app starts up, we can navigate back to the Swagger UI page to test that it's working as expected.
 
-Finally, let's try see what the ASCII animation actually looks like. If you have Babashka installed, grab the [ui.clj](https://github.com/yogthos/kit-workshop/blob/main/ui.clj)
+Finally, let's try see what the ASCII animation actually looks like. If you have Babashka installed, grab the [ui.clj](https://github.com/clojurestream/kit-workshop/blob/main/ui.clj)
 file from the repo, and then run it as follows:
 
 ```bash
